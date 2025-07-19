@@ -12,3 +12,5 @@ logs/
 .env
 model/
 context.tar.gz
+*.tar.gz
+*.tar
