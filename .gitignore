@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.zip
+*.pth
+*.pt
+*.csv
+*.ipynb
+data/
+mlruns/
+checkpoints/
+logs/
+.env
+model/

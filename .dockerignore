@@ -1,0 +1,16 @@
+# .dockerignore
+
+*.zip
+*.tar.gz
+*.pt
+*.pth
+*.csv
+*.ipynb
+__pycache__/
+data/
+mlruns/
+checkpoints/
+logs/
+*.logs*.env
+.DS_Store
+.git/
