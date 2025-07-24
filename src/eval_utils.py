@@ -7,6 +7,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import numpy as np
 import os
 
+# Utility functions for model evaluation
 def compute_predictions(model, dataloader, device):
     model.eval()
     all_preds = []
@@ -24,6 +25,7 @@ def compute_predictions(model, dataloader, device):
             
     return np.array(all_preds), np.array(all_labels), all_images
 
+# Function for plotting confusion matrix
 def plot_confusion_matrix(y_true, y_pred, class_names, save_path=None):
     cm = confusion_matrix(y_true, y_pred)
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=class_names)
@@ -38,12 +40,14 @@ def plot_confusion_matrix(y_true, y_pred, class_names, save_path=None):
     else:
         plt.show()
         
+# Function to show misclassified images
 def show_misclassified_images(images, y_true, y_pred, class_names, max_samples=6):
     wrong_indices = np.where(y_true != y_pred)[0]
     if len(wrong_indices) == 0:
         print("No misclassified images found.")
         return
     
+    # Pick misclassified images at random
     selected = np.random.choice(wrong_indices, min(max_samples, len(wrong_indices)), replace=False)
     
     plt.figure(figsize=(12, 6))

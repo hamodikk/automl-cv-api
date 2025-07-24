@@ -12,6 +12,7 @@ import mlflow
 import mlflow.pytorch
 from tqdm import tqdm
 
+# Function to train and evaluate the model
 def train_and_evaluate(params, trial):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     train_loader = get_train_loader(config.TRAIN_DIR, config.IMAGE_SIZE, config.BATCH_SIZE)
@@ -53,6 +54,7 @@ def train_and_evaluate(params, trial):
     trial.report(accuracy, step=epoch)
     return accuracy
 
+# Optuna objective function
 def objective(trial):
     # Define seach space
     params = {
@@ -67,6 +69,7 @@ def objective(trial):
         mlflow.log_metric("val_accuracy", accuracy)
     return accuracy
 
+# Run the Optuna study
 def run_study():
     mlflow.set_experiment("AutoML-CV-Optuna")
     study = optuna.create_study(direction="maximize")

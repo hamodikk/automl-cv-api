@@ -1,0 +1,8 @@
+[run]
+omit =
+    src/__init__.py
+    src/config.py
+
+[report]
+show_missing = True
+skip_covered = True

@@ -1,4 +1,5 @@
 # AutoML Computer Vision API
+![CI](https://github.com/hamodikk/automl-cv-api/actions/workflows/deploy.yml/badge.svg)
 
 This program is a lightweight, scalable image classification API powered by PyTorch and FastAPI. It has a fully automated training, hyperparameter tuning and deployment of a computer vision model. The API is production-ready, deployable via Docker and Google Cloud Run.
 
@@ -22,7 +23,7 @@ This program is a lightweight, scalable image classification API powered by PyTo
 
 ## Introduction
 
-This project delivers a lightweight, production-ready AutoML application for image classification tasks. It enables users to train, tune and deploy convolutional netural networks (CNNs) with minimal manual intervention. It is built on PyTorch (model training and evaluation), Optuna (hyperparameter tuning), and FastAPI (microservice). The program automates model selection and presents a scalable inference API on Google Cloud Run. Although originally created as a Capstone project, the application is a template for building reproducible and cost effective ML systems.
+This project delivers a lightweight, production-ready AutoML application for image classification tasks. It enables users to train, tune and deploy convolutional neural networks (CNNs) with minimal manual intervention. It is built on PyTorch (model training and evaluation), Optuna (hyperparameter tuning), and FastAPI (microservice). The program automates model selection and presents a scalable inference API on Google Cloud Run. Although originally created as a Capstone project, the application is a template for building reproducible and cost effective ML systems.
 
 ---
 
@@ -51,7 +52,7 @@ src/
     ├── train.py
     └── tune.py
 images/
-    └── Architecture.png
+    └── architecture.png
 .dockerignore
 .gitignore
 app.py
@@ -114,9 +115,9 @@ uvicorn app:app --reload
 ## Deploying to Google Cloud Run
 
 Ensure that you've:
-- Installed and authenticated the Google Cloud CLI (`gloud init`)
-- Enable `Cloud Run` and `Artifact Registry` services
-- Created a GCP project
+- Installed and authenticated the Google Cloud CLI (`gloud init`).
+- Enable `Cloud Run` and `Artifact Registry` services.
+- Created a GCP project.
 
 Then run:
 
@@ -164,8 +165,8 @@ The tuned ResNet18 model achieved the following:
 
 Confusion Matrix has been generated for the final model, as well as a sample of misclassified images have been selected to visualize the potential issues.
 
-- [Confusion Matrix](outputs/final_model_confusion_matrix.png)
-- [Sample Misclassifications](outputs/final_model_misclassified_images.png)
+- ![Confusion Matrix](outputs/final_model_confusion_matrix.png)
+- ![Sample Misclassifications](outputs/final_model_misclassified_images.png)
 
 ---
 

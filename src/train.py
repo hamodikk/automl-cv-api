@@ -48,7 +48,7 @@ def train():
         model.fc = nn.Linear(num_features, len(config.CLASS_NAMES))
         model = model.to(device)
         
-        # Loss and optimizer
+        # Loss and Optimizer
         criterion = nn.CrossEntropyLoss()
         optimizer = Adam(model.parameters(), lr=learning_rate)
         

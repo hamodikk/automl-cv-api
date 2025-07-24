@@ -12,22 +12,22 @@ import mlflow.pytorch
 from tqdm import tqdm
 
 def train_final_model():
-    # === CONFIG ===
+    # Config
     epochs = 8
     learning_rate = 2.385058434848458e-05
     optimizer_type = "adam"
     experiment_name = "AutoML_CV_Final"
     
-    device = torch.device("cude" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     train_loader = get_train_loader(config.TRAIN_DIR, config.IMAGE_SIZE, config.BATCH_SIZE)
     test_loader = get_test_loader(config.TEST_DIR, config.IMAGE_SIZE, config.BATCH_SIZE)
     
-    # === MODEL ===
+    # Model
     model = models.resnet18(pretrained=True)
     model.fc = nn.Linear(model.fc.in_features, len(config.CLASS_NAMES))
     model.to(device)
     
-    # === OPTIMIZER & LOSS ===
+    # Optimizer & Loss
     criterion = nn.CrossEntropyLoss()
     optimizer = Adam(model.parameters(), lr=learning_rate)
     
