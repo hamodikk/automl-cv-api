@@ -32,6 +32,7 @@ jobs:
 
     - name: Run tests
       run: |
+        export PYTHONPATH=$PWD/src
         pytest --cov=src --cov-report=term-missing tests
 
     - name: Configure Docker for Artifact Registry
