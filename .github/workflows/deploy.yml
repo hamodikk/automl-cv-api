@@ -28,7 +28,7 @@ jobs:
 
     - name: Install test dependencies
       run: |
-        pip install pytest pytest-cov torch torchvision
+        pip install pytest pytest-cov torch torchvision matplotlib
 
     - name: Set PYTHONPATH
       run: echo "PYTHONPATH=." >> $GITHUB_ENV
