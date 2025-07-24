@@ -13,4 +13,5 @@ logs/
 model/
 context.tar.gz
 *.tar.gz
-*.tar
+*.tarkey.json
+key.json
