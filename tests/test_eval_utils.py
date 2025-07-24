@@ -9,7 +9,7 @@ def test_compute_predictions_runs():
     model.fc = torch.nn.Linear(model.fc.in_features, 2)
     
     #Dummy data
-    images = torch.random(8, 3, 150, 150) # 8 images, 3 channels, 150x150 pixels
+    images = torch.randn(8, 3, 150, 150) # 8 images, 3 channels, 150x150 pixels
     labels = torch.randint(0, 2, (8,))
     
     dataset = TensorDataset(images, labels)
