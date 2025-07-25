@@ -16,3 +16,4 @@ logs/
 .git/
 requirements-dev.txt
 tests/
+key.json
