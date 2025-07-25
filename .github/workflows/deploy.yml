@@ -47,9 +47,10 @@ jobs:
         docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api
 
     - name: Deploy to Cloud Run
-      uses: google-github-actions/deploy-cloudrun@v1
-      with:
-        service: ${{ secrets.CLOUD_RUN_SERVICE }}
-        region: ${{ secrets.CLOUD_RUN_REGION }}
-        image: us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api
-        flags: --timeout=600s --service-account=github-actions@${{ secrets.GCP_PROJECT_ID }}.iam.gserviceaccount.com
+      run: |
+        gcloud run deploy ${{ secrets.CLOUD_RUN_SERVICE }} \
+          --image us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api \
+          --platform managed \
+          --region ${{ secrets.CLOUD_RUN_REGION }} \
+          --service-account github-actions@${{ secrets.GCP_PROJECT_ID }}.iam.gserviceaccount.com \
+          --quiet
