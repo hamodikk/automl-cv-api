@@ -26,7 +26,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy entire project
 COPY . /app
-COPY model /app/model
 
 # Expose port (Cloud Run uses 8080)
 EXPOSE 8080
