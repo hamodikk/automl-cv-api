@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM --platform=linux/amd64python:3.12-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
