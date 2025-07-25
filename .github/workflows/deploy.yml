@@ -52,3 +52,4 @@ jobs:
         service: ${{ secrets.CLOUD_RUN_SERVICE }}
         region: ${{ secrets.CLOUD_RUN_REGION }}
         image: us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api
+        service_acount: github-actions@${{ secrets.GCP_PROJECT_ID }}.iam.gserviceaccount.com
