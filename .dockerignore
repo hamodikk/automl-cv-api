@@ -17,3 +17,5 @@ logs/
 requirements-dev.txt
 tests/
 key.json
+!model/
+!model/**/*
