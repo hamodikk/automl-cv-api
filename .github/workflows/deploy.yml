@@ -53,7 +53,6 @@ jobs:
           --image us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api:${GITHUB_SHA} \
           --platform managed \
           --region ${{ secrets.CLOUD_RUN_REGION }} \
-          --service-account github-actions@${{ secrets.GCP_PROJECT_ID }}.iam.gserviceaccount.com \
           --allow-unauthenticated \
           --timeout 600s \
           --port=8080 \
