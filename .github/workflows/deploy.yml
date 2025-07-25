@@ -43,19 +43,19 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api:latest .
-        docker tag automl-cv-api us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api:latest
-        docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api:latest
+        docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api:${GITHUB_SHA} .
+        docker tag us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api:${GITHUB_SHA} us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api:latest
+        docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api:${GITHUB_SHA}
 
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy ${{ secrets.CLOUD_RUN_SERVICE }} \
-          --image us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api:latest \
+          --image us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/automl/automl-cv-api:${GITHUB_SHA} \
           --platform managed \
           --region ${{ secrets.CLOUD_RUN_REGION }} \
           --service-account github-actions@${{ secrets.GCP_PROJECT_ID }}.iam.gserviceaccount.com \
           --allow-unauthenticated \
-          --timeout=600s \
+          --timeout 600s \
           --port=8080 \
           --memory=1Gi \
           --quiet
