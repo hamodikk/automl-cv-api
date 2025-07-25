@@ -53,4 +53,8 @@ jobs:
           --platform managed \
           --region ${{ secrets.CLOUD_RUN_REGION }} \
           --service-account github-actions@${{ secrets.GCP_PROJECT_ID }}.iam.gserviceaccount.com \
+          --allow-unauthenticated \
+          --timeout=600s \
+          --port=8080 \
+          --memory=1Gi \
           --quiet
