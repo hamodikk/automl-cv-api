@@ -16,6 +16,9 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# Debug
+print("==> Starting FastAPI app...")
+
 # Load the model from MLflow
 print("Loading model from MLflow...")
 model = mlflow.pytorch.load_model("model")

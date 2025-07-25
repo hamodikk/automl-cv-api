@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 python:3.12-slim
+FROM python:3.12-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -29,6 +29,10 @@ COPY . /app
 
 # Expose port (Cloud Run uses 8080)
 EXPOSE 8080
+
+# Debug
+RUN echo "==> Dockerfile COPY step complete"
+RUN ls -lah /app
 
 # Start the FastAPI app
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
