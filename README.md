@@ -41,6 +41,19 @@ This project delivers a lightweight, production-ready AutoML application for ima
 
 ## Project File Structure
 ```
+.github/
+    └── workflows/
+        └── deploy.yml
+images/
+    └── architecture.png
+model/
+    ├── data/
+        ├── model.pth
+        └── pickle_module_info.txt
+    ├── conda.yaml
+    ├── MLmodel
+    ├── python_env.yaml
+    └── requirements.txt
 outputs/
     ├── final_model_confusion_matrix.png
     └── final_model_misclassified_images.png
@@ -51,14 +64,19 @@ src/
     ├── train_final.py
     ├── train.py
     └── tune.py
-images/
-    └── architecture.png
+static/
+    └── index.html
+tests/
+    ├── test_data_loader.py
+    └── test_eval_utils.py
+.coveragerc
 .dockerignore
 .gitignore
 app.py
 Dockerfile
 main.py
 README.md
+requirements-dev.txt
 requirements.txt
 ```
 
@@ -190,6 +208,6 @@ Some of the limitations of the current application are:
 
 - **End-to-end AutoML pipeline**: Allow users to upload labeled datasets to train, tune, and deploy autonomously.
 - **Batch prediction UI**: Web form for uploading multiple images at once and downloading predictions as CSV.
-- **Simple HTML frontend**: Public-facing landing page with embedded prediction form.
-- **CI/CD with GitHub Actions**: Automate Docker build and deploy to Cloud Run on `main` pushes.
+- **Simple HTML frontend**: Public-facing landing page with embedded prediction form. ✅
+- **CI/CD with GitHub Actions**: Automate Docker build and deploy to Cloud Run on `main` pushes. ✅
 - **GCS integration**: Accept image/data uploads directly to Google Cloud Storage.
