@@ -2,8 +2,6 @@
 
 *.zip
 *.tar.gz
-*.pt
-*.pth
 *.csv
 *.ipynb
 __pycache__/
