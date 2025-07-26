@@ -71,9 +71,9 @@ jobs:
         service: ${{ secrets.CLOUD_RUN_SERVICE }}
         image: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
         region: ${{ secrets.CLOUD_RUN_REGION }}
-        service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-        allow_unauthenticated: true
         timeout: 600s
-        port: 8080
-        memory: 1Gi
-        flags: --quiet
+        flags: >
+          --allow-unauthenticated
+          --service-account=${{ secrets.GCP_SERVICE_ACCOUNT }}
+          --port=8080
+          --memory=1Gi
