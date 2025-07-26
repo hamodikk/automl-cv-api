@@ -66,14 +66,14 @@ jobs:
         --filter="package=automl-cv-api" --format="table(name, updateTime)"
 
     - name: Deploy to Cloud Run
-      run: |
-        gcloud run deploy ${{ secrets.CLOUD_RUN_SERVICE }} \
-          --image ${{ env.DOCKER_IMAGE }}:${{ github.sha }} \
-          --platform managed \
-          --region ${{ secrets.CLOUD_RUN_REGION }} \
-          --service-account ${{ secrets.GCP_SERVICE_ACCOUNT }} \
-          --allow-unauthenticated \
-          --timeout=600s \
-          --port=8080 \
-          --memory=1Gi \
-          --quiet
+      uses: google-github-actions/deploy-cloudrun@v2
+      with:
+        service: ${{ secrets.CLOUD_RUN_SERVICE }}
+        image: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+        region: ${{ secrets.CLOUD_RUN_REGION }}
+        service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+        allow_unauthenticated: true
+        timeout: 600s
+        port: 8080
+        memory: 1Gi
+        flags: --quiet
